@@ -3,30 +3,37 @@ const buttonGenera = document.getElementById("genera");
 
 buttonGenera.addEventListener('click' , function(){
     let nome_cognome = document.getElementById("fname").value;
-    console.log(nome_cognome);
 
     let chilometri = document.getElementById("km").value;
 
     let prezzo = 0.21 * chilometri;
+    
+    let offerta;
 
     let eta = document.getElementById("eta").value;
 
     if(eta == "minorenne"){
         let sconto = prezzo * 0.2
         prezzo = prezzo - sconto
-        console.log(`Il prezzo finale del biglietto é ${prezzo} $`)
+        offerta = "Biglietto ridotto under 18"
     }
 
     else if(eta == "over"){
         let sconto = prezzo * 0.4
         prezzo = prezzo - sconto
-        console.log(`Il prezzo finale del biglietto é ${prezzo} $`)
+        offerta = "Biglietto ridotto over 65"
     }
 
     else{
         prezzo = prezzo
-        console.log(`Il prezzo finale del biglietto é ${prezzo} $`)
+        offerta = "Biglietto standard"
     }
+
+    document.getElementById('nome').innerText = nome_cognome;
+    document.getElementById('offerta').innerText = offerta;
+    document.getElementById('carrozza').innerText = "5";
+    document.getElementById('cod').innerText = "92911";
+    document.getElementById('prezzo_finale').innerText =  `${prezzo.toFixed(2)} $`
 });
 
 // Annulla button
